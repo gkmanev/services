@@ -23,7 +23,7 @@ class WindCheck():
 
     def neykovo_query(self):
         try:
-            query = self.client.query(f"SELECT * FROM active_pow ORDER BY DESC LIMIT 1")            
+            query = self.client.query(f"SELECT * FROM neykovo_pow ORDER BY DESC LIMIT 1")            
             return query
         except (influxdb.exceptions.InfluxDBClientError, influxdb.exceptions.InfluxDBServerError) as e:
             print(e)
