@@ -2,8 +2,9 @@
 # pylint: disable=unused-argument
 # This program is dedicated to the public domain under the CC0 license.
 
-import utils
-from typing import Union, List
+import asyncio
+import time
+from threading import Thread
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, KeyboardButton, ReplyKeyboardMarkup, constants
 from telegram.ext import (
     Application,
@@ -13,10 +14,7 @@ from telegram.ext import (
     ConversationHandler,    
 )
 from utils import WindCheck, check_services
-
-
-
-
+import aioschedule
 
 
 
@@ -40,6 +38,16 @@ initial_keyboard = [
         InlineKeyboardButton("Status Wind", callback_data=str(STATUS)),                  
     ]
 ]
+
+
+
+# Schedule the asynchronous periodic function to run every 1 min
+async def schedule_thread():
+    while True:
+        periodic_arr = await aioschedule.every(1).minutes.do(check_services)
+        print("Result array:", periodic_arr)
+        await asyncio.sleep(1)
+
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -118,7 +126,9 @@ conv_handler = ConversationHandler(
 # Add ConversationHandler to application that will be used for handling updates
 application.add_handler(conv_handler)
 
-
+# Add the asynchronous periodic scheduler thread to the application
+thread = Thread(target=lambda: asyncio.run(schedule_thread()))
+thread.start()
 
 # Run the bot until the user presses Ctrl-C
 application.run_polling(allowed_updates=Update.ALL_TYPES)
