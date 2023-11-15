@@ -14,10 +14,20 @@ class WindCheck():
 
 
     def aris_query(self):
-        return self.client.query(f"SELECT * FROM active_pow ORDER BY DESC LIMIT 1")
+        try:
+            query = self.client.query(f"SELECT * FROM active_pow ORDER BY DESC LIMIT 1")            
+            return query
+        except (influxdb.exceptions.InfluxDBClientError, influxdb.exceptions.InfluxDBServerError) as e:
+            print(e)
+            return None             
 
     def neykovo_query(self):
-        return self.client.query(f"SELECT * FROM neykovo_pow ORDER BY DESC LIMIT 1")
+        try:
+            query = self.client.query(f"SELECT * FROM active_pow ORDER BY DESC LIMIT 1")            
+            return query
+        except (influxdb.exceptions.InfluxDBClientError, influxdb.exceptions.InfluxDBServerError) as e:
+            print(e)
+            return None       
     
     def from_day_beginning(self, measurement):
         # Get the current date
