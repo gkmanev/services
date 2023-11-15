@@ -81,12 +81,13 @@ async def wind_status(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int
         parse_mode=constants.ParseMode.HTML
     )
     services = check_services(is_called_from_menu=True)
-    formatted_text = '\n'.join(services)    
+    print(services)
+    # formatted_text = '\n'.join(services)    
     
-    await query.edit_message_text(
-        text= f'<b>{formatted_text}</b>',        
-        parse_mode= constants.ParseMode.HTML
-    )
+    # await query.edit_message_text(
+    #     text= f'<b>{formatted_text}</b>',        
+    #     parse_mode= constants.ParseMode.HTML
+    # )
     return START_ROUTES
 
 
