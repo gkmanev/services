@@ -281,5 +281,9 @@ def check_services(is_called_from_menu=False):
     else:
         status_list.append("Power Ping: Fail")
         print(f"Power Ping: Fail")
-    return(status_list,periodic_messages)
+    
+    if len(status_list) > 0:
+        return status_list
+    elif len(periodic_messages) > 0:
+        return periodic_messages
     
