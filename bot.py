@@ -42,7 +42,8 @@ initial_keyboard = [
 
 def my_periodic_function():
     # Your logic here
-    print("Function called at:", time.strftime("%Y-%m-%d %H:%M:%S"))
+    test = check_services(is_called_from_menu=False)
+    print(test)
 
 def schedule_thread():
     while True:
@@ -50,7 +51,7 @@ def schedule_thread():
         time.sleep(1)
 
 # Schedule the function to run every 1 hour
-schedule.every(10).seconds.do(my_periodic_function)
+schedule.every(30).seconds.do(my_periodic_function)
 
 # Start the scheduling thread
 thread = Thread(target=schedule_thread)
