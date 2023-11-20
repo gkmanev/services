@@ -46,7 +46,7 @@ def my_periodic_function():
     # Your logic here
     check_list = msg_list.copy()  # Create a copy of msg_list to compare
     msgs = check_services(is_called_from_menu=False)
-    print(msgs)
+    
     msg_list.clear()  # Clear the original msg_list before appending new messages
     msg_list.extend(msgs)  # Extend the list with new messages
     # Now you can compare check_list with the previous state of msg_list
