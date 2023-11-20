@@ -4,6 +4,7 @@
 
 import asyncio
 import time
+import schedule
 from threading import Thread
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, KeyboardButton, ReplyKeyboardMarkup, constants
 from telegram.ext import (
@@ -39,15 +40,21 @@ initial_keyboard = [
     ]
 ]
 
+def my_periodic_function():
+    # Your logic here
+    print("Function called at:", time.strftime("%Y-%m-%d %H:%M:%S"))
 
-
-# Schedule the asynchronous periodic function to run every 1 min
-async def schedule_thread():
+def schedule_thread():
     while True:
-        periodic_arr = await aioschedule.every(1).minutes.do(check_services)
-        print("Result array:", periodic_arr)
-        await asyncio.sleep(1)
+        schedule.run_pending()
+        time.sleep(1)
 
+# Schedule the function to run every 1 hour
+schedule.every(10).seconds.do(my_periodic_function)
+
+# Start the scheduling thread
+thread = Thread(target=schedule_thread)
+thread.start()
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -125,10 +132,6 @@ conv_handler = ConversationHandler(
 
 # Add ConversationHandler to application that will be used for handling updates
 application.add_handler(conv_handler)
-
-# Add the asynchronous periodic scheduler thread to the application
-thread = Thread(target=lambda: asyncio.run(schedule_thread()))
-thread.start()
 
 # Run the bot until the user presses Ctrl-C
 application.run_polling(allowed_updates=Update.ALL_TYPES)
