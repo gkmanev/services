@@ -229,61 +229,61 @@ def check_services(is_called_from_menu=False):
             periodic_messages.append({
                 "power_db":"Power | database error"
             })
-    if email_enPro:
-        status_list.append("mail enPro: OK")
-        print(f"mail enPro: OK")
-    else:
-        status_list.append("mail enPro: Missing!")
-        print(f"mail enPro: Missing!")
-    if email_utopus_aris:
-        status_list.append("mail Aris Utopus: OK")
-        print(f"mail Aris Utopus: OK")
-    else:
-        status_list.append("mail Aris Utopus: Missing!")
-        print(f"mail Aris Utopus: Missing!")
-    if email_utopus_power:
-        status_list.append("mail Power Utopus: OK")
-        print(f"mail Power Utopus: OK")
-    else:
-        status_list.append("mail Power Utopus: Missing!")
-        print(f"mail Power Utopus: Missing!")
-    if aris_db_count_enPro:
-        status_list.append("Aris Forecast Complete: OK")
-        print(f"Aris Forecast Complete: OK")
-    else:
-        status_list.append("Aris Forecast Complete: Missing vals")
-        print(f"Aris Forecast Complete: Missing vals")
-    if power_db_count_enPro:
-        status_list.append("Power Forecast Complete: OK")
-        print(f"Power Forecast Complete: OK")
-    else:
-        status_list.append("Power Forecast Complete: Missing vals")
-        print(f"Power Forecast Complete: Missing vals")
-    if aris_db_count_utopus:
-        status_list.append("Aris ForecastUtopus Complete: OK")
-        print(f"Aris ForecastUtopus Complete: OK")
-    else:
-        status_list.append("Aris ForecastUtopus Complete: Missing vals")
-        print(f"Aris ForecastUtopus Complete: Missing vals")
-    if power_db_count_utopus:
-        status_list.append("Power ForecastUtopus Complete: OK")
-        print(f"Power ForecastUtopus Complete: OK")
-    else:
-        status_list.append("Power ForecastUtopus Complete: Missing vals")
-        print(f"Power ForecastUtopus Complete: Missing vals")
-    #Ping
-    if ping_aris:
-        status_list.append("Aris Ping: OK")
-        print(f"Aris Ping: OK")
-    else:
-        status_list.append("Aris Ping: Fail")
-        print(f"Aris Ping: Fail")
-    if ping_power:
-        status_list.append("Power Ping: OK")
-        print(f"Power Ping: OK")
-    else:
-        status_list.append("Power Ping: Fail")
-        print(f"Power Ping: Fail")
+    # if email_enPro:
+    #     status_list.append("mail enPro: OK")
+    #     print(f"mail enPro: OK")
+    # else:
+    #     status_list.append("mail enPro: Missing!")
+    #     print(f"mail enPro: Missing!")
+    # if email_utopus_aris:
+    #     status_list.append("mail Aris Utopus: OK")
+    #     print(f"mail Aris Utopus: OK")
+    # else:
+    #     status_list.append("mail Aris Utopus: Missing!")
+    #     print(f"mail Aris Utopus: Missing!")
+    # if email_utopus_power:
+    #     status_list.append("mail Power Utopus: OK")
+    #     print(f"mail Power Utopus: OK")
+    # else:
+    #     status_list.append("mail Power Utopus: Missing!")
+    #     print(f"mail Power Utopus: Missing!")
+    # if aris_db_count_enPro:
+    #     status_list.append("Aris Forecast Complete: OK")
+    #     print(f"Aris Forecast Complete: OK")
+    # else:
+    #     status_list.append("Aris Forecast Complete: Missing vals")
+    #     print(f"Aris Forecast Complete: Missing vals")
+    # if power_db_count_enPro:
+    #     status_list.append("Power Forecast Complete: OK")
+    #     print(f"Power Forecast Complete: OK")
+    # else:
+    #     status_list.append("Power Forecast Complete: Missing vals")
+    #     print(f"Power Forecast Complete: Missing vals")
+    # if aris_db_count_utopus:
+    #     status_list.append("Aris ForecastUtopus Complete: OK")
+    #     print(f"Aris ForecastUtopus Complete: OK")
+    # else:
+    #     status_list.append("Aris ForecastUtopus Complete: Missing vals")
+    #     print(f"Aris ForecastUtopus Complete: Missing vals")
+    # if power_db_count_utopus:
+    #     status_list.append("Power ForecastUtopus Complete: OK")
+    #     print(f"Power ForecastUtopus Complete: OK")
+    # else:
+    #     status_list.append("Power ForecastUtopus Complete: Missing vals")
+    #     print(f"Power ForecastUtopus Complete: Missing vals")
+    # #Ping
+    # if ping_aris:
+    #     status_list.append("Aris Ping: OK")
+    #     print(f"Aris Ping: OK")
+    # else:
+    #     status_list.append("Aris Ping: Fail")
+    #     print(f"Aris Ping: Fail")
+    # if ping_power:
+    #     status_list.append("Power Ping: OK")
+    #     print(f"Power Ping: OK")
+    # else:
+    #     status_list.append("Power Ping: Fail")
+    #     print(f"Power Ping: Fail")
     
     print(f"status: {print(len(status_list))}, periodic: {print(len(periodic_messages))}")
     if len(status_list) > 0:
