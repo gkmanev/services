@@ -229,12 +229,14 @@ def check_services(is_called_from_menu=False):
             periodic_messages.append({
                 "power_db":"Power | database error"
             })
-    # if email_enPro:
-    #     status_list.append("mail enPro: OK")
-    #     print(f"mail enPro: OK")
-    # else:
-    #     status_list.append("mail enPro: Missing!")
-    #     print(f"mail enPro: Missing!")
+    if email_enPro:
+        if is_called_from_menu:
+            status_list.append("mail enPro: OK")           
+    else:
+        if is_called_from_menu:
+            status_list.append("mail enPro: Missing!")
+        else:
+            periodic_messages.append({"forecast EP | email missing"})
     # if email_utopus_aris:
     #     status_list.append("mail Aris Utopus: OK")
     #     print(f"mail Aris Utopus: OK")
