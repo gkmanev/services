@@ -61,10 +61,9 @@ def my_periodic_function():
         for diff in differences:
             print(diff)
     else:
-        print("No differences found.")
+        print("No differences found.")   
    
-   
-    print(f"check_list: {check_list} ||| msg_list: {msg_list}")
+    # print(f"check_list: {check_list} ||| msg_list: {msg_list}")
 
 def schedule_thread():
     while True:
