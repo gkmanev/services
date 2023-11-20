@@ -51,9 +51,9 @@ def my_periodic_function():
     msg_list.extend(msgs)  # Extend the list with new messages
     # Now you can compare check_list with the previous state of msg_list
     # For example:
-    added_msgs = [msg for msg in msg_list if msg not in check_list]
-    removed_msgs = [msg for msg in check_list if msg not in msg_list]
-    print(f"added_msgs: {print(added_msgs)} | removed_msgs: {print(removed_msgs)}")
+    # added_msgs = [msg for msg in msg_list if msg not in check_list]
+    # removed_msgs = [msg for msg in check_list if msg not in msg_list]
+    print(f"check_list: {print(check_list)} | msg_list: {print(msg_list)}")
 
 def schedule_thread():
     while True:
