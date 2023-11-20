@@ -144,16 +144,17 @@ class WindCheck():
         beginning_of_next_day_timestamp = int(beginning_of_next_day.timestamp())
 
         # Create the InfluxDB query with the WHERE clause for the time range
-        query = f"SELECT * FROM {measurement} WHERE time >= {beginning_of_day_timestamp}s and time <= {beginning_of_next_day_timestamp}s"
-        print(query)
+        query = f"SELECT * FROM {measurement} WHERE time >= {beginning_of_day_timestamp}s and time <= {beginning_of_next_day_timestamp}s"        
         result = self.client.query(query)
-        data = list(result)[0]
-        print(len(data))      
-        if len(data) == 97:
-            return True
+        if result:
+            data = list(result)[0]
+            print(len(data))      
+            if len(data) == 97:
+                return True
+            else:
+                return False       
         else:
-            return False       
-                
+            return False
         
 def check_services(is_called_from_menu=False):
     print("Here!!!")
