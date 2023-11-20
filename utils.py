@@ -157,7 +157,7 @@ class WindCheck():
             return False
         
 def check_services(is_called_from_menu=False):
-    print("Here!!!")
+    
     status_list = []
     periodic_messages = []
     
