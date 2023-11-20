@@ -40,10 +40,19 @@ initial_keyboard = [
     ]
 ]
 
+msg_list = []
+
 def my_periodic_function():
     # Your logic here
-    test = check_services(is_called_from_menu=False)
-    print(test)
+    check_list = msg_list.copy()  # Create a copy of msg_list to compare
+    msgs = check_services(is_called_from_menu=False)
+    msg_list.clear()  # Clear the original msg_list before appending new messages
+    msg_list.extend(msgs)  # Extend the list with new messages
+    # Now you can compare check_list with the previous state of msg_list
+    # For example:
+    added_msgs = [msg for msg in msg_list if msg not in check_list]
+    removed_msgs = [msg for msg in check_list if msg not in msg_list]
+    print(f"added_msgs: {print(added_msgs)} | removed_msgs: {print(removed_msgs)}")
 
 def schedule_thread():
     while True:
