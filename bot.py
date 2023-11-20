@@ -49,11 +49,21 @@ def my_periodic_function():
     
     msg_list.clear()  # Clear the original msg_list before appending new messages
     msg_list.extend(msgs)  # Extend the list with new messages
+    # Check for differences between dictionaries
+    differences = []
+
+    for check_dict in msg_list:
+        if check_dict not in check_list:
+            differences.append(check_dict)
+
+    if differences:
+        print("Differences found:")
+        for diff in differences:
+            print(diff)
+    else:
+        print("No differences found.")
    
-    # Now you can compare check_list with the previous state of msg_list
-    # For example:
-    # added_msgs = [msg for msg in msg_list if msg not in check_list]
-    # removed_msgs = [msg for msg in check_list if msg not in msg_list]
+   
     print(f"check_list: {check_list} ||| msg_list: {msg_list}")
 
 def schedule_thread():
