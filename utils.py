@@ -145,6 +145,7 @@ class WindCheck():
 
         # Create the InfluxDB query with the WHERE clause for the time range
         query = f"SELECT * FROM {measurement} WHERE time >= {beginning_of_day_timestamp}s and time <= {beginning_of_next_day_timestamp}s"
+        print(query)
         result = self.client.query(query)
         data = list(result)[0]
         print(len(data))      
