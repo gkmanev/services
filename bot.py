@@ -5,6 +5,7 @@
 import asyncio
 import time
 import schedule
+import telegram
 from threading import Thread
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, KeyboardButton, ReplyKeyboardMarkup, constants
 from telegram.ext import (
@@ -18,7 +19,7 @@ from utils import WindCheck, check_services
 import aioschedule
 
 
-
+bot = telegram.Bot(token="6615001834:AAEwtOD_EVyFYrOPHk_GdHgkdEKxRHFUc-4")
 
 # Stages
 START_ROUTES, END_ROUTES = range(2)
@@ -59,7 +60,7 @@ def my_periodic_function():
     if differences:
         print("Differences found:")
         for diff in differences:
-            print(diff)
+            bot.sendMessage(chat_id="834795164", text= diff)
     else:
         print("No differences found.")   
    
