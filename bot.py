@@ -67,16 +67,11 @@ async def my_periodic_function():
    
     # print(f"check_list: {check_list} ||| msg_list: {msg_list}")
 
-# Modify the scheduling part to use the async function
-async def schedule_async():
-    while True:
-        await asyncio.sleep(1)
-        await my_periodic_function()
 
 # Schedule the function to run every 1 hour
 async def schedule_task():
     while True:
-        await schedule_async()
+        await my_periodic_function()
         await asyncio.sleep(3600)  # Run every 1 hour
 
 # Start the scheduling thread
