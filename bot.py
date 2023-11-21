@@ -72,7 +72,7 @@ async def my_periodic_function():
 async def schedule_task():
     while True:
         await my_periodic_function()
-        await asyncio.sleep(3600)  # Run every 1 hour
+        await asyncio.sleep(30)  # Run every 1 hour
 
 # Start the scheduling thread
 # Start the scheduling task
