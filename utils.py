@@ -203,32 +203,32 @@ def check_services(is_called_from_menu=False):
         if is_called_from_menu:
             status_list.append("Aris DB: OK")
         else: 
-            periodic_messages.append({
-                "aris_db":"Aris | database fixed"
-            })      
+            periodic_messages.append(
+                "Aris | database fixed"
+            )      
         
     else:
         if is_called_from_menu:
             status_list.append("Aris DB: Fail!")
         else:
-            periodic_messages.append({
-                "aris_db":"Aris | database error"
-            }) 
+            periodic_messages.append(
+                "Aris | database error"
+            ) 
             
     if live_power_check:
         if is_called_from_menu:
             status_list.append("Power DB: OK")
         else:
-            periodic_messages.append({
-                "power_db":"Power | database fixed"
-            })            
+            periodic_messages.append(
+                "Power | database fixed"
+            )            
     else:
         if is_called_from_menu:
             status_list.append("Power DB: Fail!")
         else:
-            periodic_messages.append({
-                "power_db":"Power | database error"
-            })
+            periodic_messages.append(
+                "Power | database error"
+            )
     if email_enPro:
         if is_called_from_menu:
             status_list.append("mail enPro: OK")           
@@ -236,7 +236,7 @@ def check_services(is_called_from_menu=False):
         if is_called_from_menu:
             status_list.append("mail enPro: Missing!")
         else:
-            periodic_messages.append({"forecast EP | email missing"})
+            periodic_messages.append("forecast EP | email missing")
     if email_utopus_aris:
         if is_called_from_menu:
             status_list.append("mail Aris Utopus: OK")        
