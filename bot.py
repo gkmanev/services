@@ -44,6 +44,7 @@ initial_keyboard = [
 msg_list = []
 
 def my_periodic_function():
+    global bot
     # Your logic here
     check_list = msg_list.copy()  # Create a copy of msg_list to compare
     msgs = check_services(is_called_from_menu=False)
@@ -60,7 +61,7 @@ def my_periodic_function():
     if differences:
         print("Differences found:")
         for diff in differences:
-            bot.sendMessage(chat_id="834795164", text= diff)
+            bot.send_message(chat_id='834795164', text=f"Difference found: {diff}")  # Replace YOUR_CHAT_ID with the desired chat ID
     else:
         print("No differences found.")   
    
