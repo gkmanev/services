@@ -43,11 +43,11 @@ initial_keyboard = [
 
 msg_list = []
 
-def my_periodic_function():
-    global bot
+async def my_periodic_function():
+    
     # Your logic here
     check_list = msg_list.copy()  # Create a copy of msg_list to compare
-    msgs = check_services(is_called_from_menu=False)
+    msgs = await asyncio.to_thread(check_services, False)
     
     msg_list.clear()  # Clear the original msg_list before appending new messages
     msg_list.extend(msgs)  # Extend the list with new messages
@@ -61,23 +61,28 @@ def my_periodic_function():
     if differences:
         print("Differences found:")
         for diff in differences:
-            bot.send_message(chat_id='834795164', text=f"Difference found: {diff}")  # Replace YOUR_CHAT_ID with the desired chat ID
+            await bot.send_message(chat_id='834795164', text=f"Difference found: {diff}")  # Replace YOUR_CHAT_ID with the desired chat ID
     else:
         print("No differences found.")   
    
     # print(f"check_list: {check_list} ||| msg_list: {msg_list}")
 
-def schedule_thread():
+# Modify the scheduling part to use the async function
+async def schedule_async():
     while True:
-        schedule.run_pending()
-        time.sleep(1)
+        await asyncio.sleep(1)
+        await my_periodic_function()
 
 # Schedule the function to run every 1 hour
-schedule.every(30).seconds.do(my_periodic_function)
+async def schedule_task():
+    while True:
+        await schedule_async()
+        await asyncio.sleep(3600)  # Run every 1 hour
 
 # Start the scheduling thread
-thread = Thread(target=schedule_thread)
-thread.start()
+# Start the scheduling task
+async def start_schedule():
+    await schedule_task()
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -156,7 +161,9 @@ conv_handler = ConversationHandler(
 # Add ConversationHandler to application that will be used for handling updates
 application.add_handler(conv_handler)
 
+asyncio.run(start_schedule())
 # Run the bot until the user presses Ctrl-C
 application.run_polling(allowed_updates=Update.ALL_TYPES)
+
 
 
