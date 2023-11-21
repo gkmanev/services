@@ -156,9 +156,10 @@ conv_handler = ConversationHandler(
 # Add ConversationHandler to application that will be used for handling updates
 application.add_handler(conv_handler)
 
-asyncio.run(start_schedule())
-# Run the bot until the user presses Ctrl-C
-application.run_polling(allowed_updates=Update.ALL_TYPES)
+loop = asyncio.get_event_loop()
+loop.create_task(start_schedule())
+loop.create_task(application.run_polling(allowed_updates=Update.ALL_TYPES))
+loop.run_forever()
 
 
 
