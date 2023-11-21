@@ -237,30 +237,40 @@ def check_services(is_called_from_menu=False):
             status_list.append("mail enPro: Missing!")
         else:
             periodic_messages.append({"forecast EP | email missing"})
-    # if email_utopus_aris:
-    #     status_list.append("mail Aris Utopus: OK")
-    #     print(f"mail Aris Utopus: OK")
-    # else:
-    #     status_list.append("mail Aris Utopus: Missing!")
-    #     print(f"mail Aris Utopus: Missing!")
-    # if email_utopus_power:
-    #     status_list.append("mail Power Utopus: OK")
-    #     print(f"mail Power Utopus: OK")
-    # else:
-    #     status_list.append("mail Power Utopus: Missing!")
-    #     print(f"mail Power Utopus: Missing!")
-    # if aris_db_count_enPro:
-    #     status_list.append("Aris Forecast Complete: OK")
-    #     print(f"Aris Forecast Complete: OK")
-    # else:
-    #     status_list.append("Aris Forecast Complete: Missing vals")
-    #     print(f"Aris Forecast Complete: Missing vals")
-    # if power_db_count_enPro:
-    #     status_list.append("Power Forecast Complete: OK")
-    #     print(f"Power Forecast Complete: OK")
-    # else:
-    #     status_list.append("Power Forecast Complete: Missing vals")
-    #     print(f"Power Forecast Complete: Missing vals")
+    if email_utopus_aris:
+        if is_called_from_menu:
+            status_list.append("mail Aris Utopus: OK")        
+    else:
+        if is_called_from_menu:
+            status_list.append("mail Aris Utopus: Missing!")
+        else:
+            periodic_messages.append("Aris | Forecast Utopus | email missing")
+    if email_utopus_power:
+        if is_called_from_menu:
+            status_list.append("mail Power Utopus: OK")
+    else:
+        if is_called_from_menu:
+            status_list.append("mail Power Utopus: Missing!")
+        else:
+            periodic_messages.append("Power | Forecast Utopus | email missing")
+    
+    if aris_db_count_enPro:
+        if is_called_from_menu:
+            status_list.append("Aris Forecast Complete: OK")        
+    else:
+        if is_called_from_menu:
+            status_list.append("Aris Forecast Complete: Missing vals")
+        else:
+            periodic_messages.append("Aris | Forecast | Missing vals")
+    if power_db_count_enPro:
+        if is_called_from_menu:
+            status_list.append("Power Forecast Complete: OK")        
+    else:
+        if is_called_from_menu:
+            status_list.append("Power Forecast Complete: Missing vals")
+        else:
+            periodic_messages.append("Power | Forecast | Missing vals")
+            
     # if aris_db_count_utopus:
     #     status_list.append("Aris ForecastUtopus Complete: OK")
     #     print(f"Aris ForecastUtopus Complete: OK")
@@ -287,7 +297,7 @@ def check_services(is_called_from_menu=False):
     #     status_list.append("Power Ping: Fail")
     #     print(f"Power Ping: Fail")
     
-    print(f"status: {print(len(status_list))}, periodic: {print(len(periodic_messages))}")
+    
     if len(status_list) > 0:
         return status_list
     elif len(periodic_messages) > 0:
