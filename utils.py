@@ -161,7 +161,7 @@ def check_services(is_called_from_menu=False):
     status_list = []
     periodic_messages = []
     
-    check = WindCheck('127.0.0.1','8086', 'wind')
+    check = WindCheck('192.168.1.35','8086', 'wind')
     
     #Live Aris:
     live_aris_query = check.aris_query()
