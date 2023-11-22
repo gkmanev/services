@@ -5,9 +5,5 @@ services:
     ports:
       - "8080:8080" # Adjust port mappings if needed
     restart: always # Restart the container if it crashes or stops
-    extra_hosts:
-      - "host.docker.internal:host-gateway" # Allows accessing host from container
-    environment:
-      DB_HOST: host.docker.internal
-      DB_PORT: 8086
+    network_mode: "host" # Use the host's network stack for the container
     
