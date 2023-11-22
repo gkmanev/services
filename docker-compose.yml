@@ -5,5 +5,7 @@ services:
     ports:
       - "8080:8080" # Adjust port mappings if needed
     restart: always # Restart the container if it crashes or stops
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
+    volumes:
+      - '/home/georgi/forecast_final/newForecasts:/root/forecast_final/newForecasts'  # Replace with your host path
+
+    
