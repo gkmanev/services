@@ -5,9 +5,5 @@ services:
     ports:
       - "8080:8080" # Adjust port mappings if needed
     restart: always # Restart the container if it crashes or stops
-    networks: 
-      - my_custom_network
-    
-networks:
-  my_custom_network:
-    external: true
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
