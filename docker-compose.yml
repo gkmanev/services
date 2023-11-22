@@ -7,5 +7,7 @@ services:
     restart: always # Restart the container if it crashes or stops
     volumes:
       - '/home/georgi/forecast_final/newForecasts:/root/forecast_final/newForecasts'  # Replace with your host path
+      - '/home/georgi/forecast_final/newForecastsUtopus:/root/forecast_final/newForecastsUtopus'
+      - '/home/georgi/forecast_final/newForecastsUtopusNeykovo:/root/forecast_final/newForecastsUtopusNeykovo'
 
     
