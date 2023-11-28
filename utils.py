@@ -148,7 +148,9 @@ class WindCheck():
         result = self.client.query(query)
         if result:
             data = list(result)[0]
-            print(data)      
+            print(type(data))
+            for el in data:                
+                print(el["time"])      
             if len(data) == 97:
                 return True
             else:
