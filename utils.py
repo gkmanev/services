@@ -150,12 +150,19 @@ class WindCheck():
         result = self.client.query(query)
         if result:
             data = list(result)[0]  
-            print(f"measurement: {measurement}, length: {len(data)}")          
-                 
-            if len(data) == 97:
-                return True
+            print(f"measurement: {measurement}, length: {len(data)}")     
+            if measurement == "aris_forecast" or measurement == "power_forecast":                  
+                if len(data) == 92:
+                    return True
+                else:
+                    return False
+            elif measurement == "aris_forecast_utopus" or measurement == "neykovo_forecast_utopus":
+                if len(data) == 97:
+                    return True
+                else:
+                    return False
             else:
-                return False       
+                return False                       
         else:
             return False
         
