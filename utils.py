@@ -149,10 +149,9 @@ class WindCheck():
         query = f"SELECT * FROM {measurement} WHERE time >= '{beginning_of_day_local.strftime('%Y-%m-%dT%H:%M:%SZ')}' and time <= '{beginning_of_next_day_local.strftime('%Y-%m-%dT%H:%M:%SZ')}' tz('Europe/Sofia')"
         result = self.client.query(query)
         if result:
-            data = list(result)[0]
-            print(type(data))
-            for el in data:                
-                print(el["time"])      
+            data = list(result)[0]  
+            print(f"measurement: {measurement}, length: {len(data)}")          
+                 
             if len(data) == 97:
                 return True
             else:
