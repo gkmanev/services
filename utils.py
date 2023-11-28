@@ -3,7 +3,7 @@ from influxdb import InfluxDBClient
 from datetime import datetime, timezone, timedelta
 import subprocess
 import os
-
+import pytz  
 
 class WindCheck():
     
@@ -139,12 +139,14 @@ class WindCheck():
         
 
         # Convert the beginning_of_day to UNIX timestamp in seconds
-        beginning_of_day_timestamp = int(beginning_of_day.timestamp())
-        
+        beginning_of_day_timestamp = int(beginning_of_day.timestamp())        
         beginning_of_next_day_timestamp = int(beginning_of_next_day.timestamp())
+        beginning_of_day_local = datetime.fromtimestamp(beginning_of_day_timestamp, tz=pytz.timezone('UTC')).astimezone(pytz.timezone('Europe/Sofia'))
+        beginning_of_next_day_local = datetime.fromtimestamp(beginning_of_next_day_timestamp, tz=pytz.timezone('UTC')).astimezone(pytz.timezone('Europe/Sofia'))
 
         # Create the InfluxDB query with the WHERE clause for the time range
-        query = f"SELECT * FROM {measurement} WHERE time >= {beginning_of_day_timestamp}s and time <= {beginning_of_next_day_timestamp}s"        
+        # Construct the query with the local time zone
+        query = f"SELECT * FROM {measurement} WHERE time >= '{beginning_of_day_local.strftime('%Y-%m-%dT%H:%M:%SZ')}' and time <= '{beginning_of_next_day_local.strftime('%Y-%m-%dT%H:%M:%SZ')}' tz('Europe/Sofia')"
         result = self.client.query(query)
         if result:
             data = list(result)[0]
