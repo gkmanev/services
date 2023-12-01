@@ -148,6 +148,7 @@ class WindCheck():
         # Construct the query with the local time zone
         query = f"SELECT * FROM {measurement} WHERE time >= '{beginning_of_day_local.strftime('%Y-%m-%dT%H:%M:%SZ')}' and time <= '{beginning_of_next_day_local.strftime('%Y-%m-%dT%H:%M:%SZ')}' tz('Europe/Sofia')"
         result = self.client.query(query)
+        print("HEREEEEEEE!!!!!!!!!")
         if result:
             data = list(result)[0]  
             print(f"measurement: {measurement}, length: {len(data)}")     
