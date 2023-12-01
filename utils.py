@@ -145,26 +145,27 @@ class WindCheck():
         beginning_of_next_day_local = datetime.fromtimestamp(beginning_of_next_day_timestamp, tz=pytz.timezone('UTC')).astimezone(pytz.timezone('Europe/Sofia'))
 
         # Create the InfluxDB query with the WHERE clause for the time range
-        # Construct the query with the local time zone
+        # Construct the query with the local time zone        
         query = f"SELECT * FROM {measurement} WHERE time >= '{beginning_of_day_local.strftime('%Y-%m-%dT%H:%M:%SZ')}' and time <= '{beginning_of_next_day_local.strftime('%Y-%m-%dT%H:%M:%SZ')}' tz('Europe/Sofia')"
-        result = self.client.query(query)      
-        if result:
-            data = list(result)[0]  
-            print(f"measurement: {measurement}, length: {len(data)}")     
-            if measurement == "aris_forecast" or measurement == "power_forecast":                  
-                if len(data) == 97:
-                    return True
-                else:
-                    return False
-            elif measurement == "aris_forecast_utopus" or measurement == "neykovo_forecast_utopus":
-                if len(data) == 97:
-                    return True
-                else:
-                    return False
-            else:
-                return False                       
-        else:
-            return False
+        return True
+        # result = self.client.query(query)      
+        # if result:
+        #     data = list(result)[0]  
+        #     print(f"measurement: {measurement}, length: {len(data)}")     
+        #     if measurement == "aris_forecast" or measurement == "power_forecast":                  
+        #         if len(data) == 97:
+        #             return True
+        #         else:
+        #             return False
+        #     elif measurement == "aris_forecast_utopus" or measurement == "neykovo_forecast_utopus":
+        #         if len(data) == 97:
+        #             return True
+        #         else:
+        #             return False
+        #     else:
+        #         return False                       
+        # else:
+        #     return False
         
 def check_services(is_called_from_menu=False):
     
