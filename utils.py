@@ -298,24 +298,24 @@ def check_services(is_called_from_menu=False):
         else:
             periodic_messages.append("Power | Utopus | Missing vals")
             
-    #Ping
-    if ping_aris:
-        if is_called_from_menu:
-            status_list.append("Aris Ping: OK")        
-    else:
-        if is_called_from_menu:
-            status_list.append("Aris Ping: Fail")
-        else:
-            periodic_messages.append("Aris | connectivity | error")
+    # #Ping
+    # if ping_aris:
+    #     if is_called_from_menu:
+    #         status_list.append("Aris Ping: OK")        
+    # else:
+    #     if is_called_from_menu:
+    #         status_list.append("Aris Ping: Fail")
+    #     else:
+    #         periodic_messages.append("Aris | connectivity | error")
 
-    if ping_power:
-        if is_called_from_menu:
-            status_list.append("Power Ping: OK")        
-    else:
-        if is_called_from_menu:
-            status_list.append("Power Ping: Fail")
-        else:
-            periodic_messages.append("Power | connectivity | error")
+    # if ping_power:
+    #     if is_called_from_menu:
+    #         status_list.append("Power Ping: OK")        
+    # else:
+    #     if is_called_from_menu:
+    #         status_list.append("Power Ping: Fail")
+    #     else:
+    #         periodic_messages.append("Power | connectivity | error")
     
     
     if len(status_list) > 0:
