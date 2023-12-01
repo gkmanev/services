@@ -298,7 +298,7 @@ def check_services(is_called_from_menu=False):
         else:
             periodic_messages.append("Power | Utopus | Missing vals")
             
-    #Ping
+    ##Ping
     # if ping_aris:
     #     if is_called_from_menu:
     #         status_list.append("Aris Ping: OK")        
