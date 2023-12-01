@@ -203,11 +203,11 @@ def check_services(is_called_from_menu=False):
     #Power Utopus
     power_db_count_utopus = check.forecast_check_db_day_begin("neykovo_forecast_utopus")
     
-    #Ping Farms:
-    #Aris:10.126.252.1
-    ping_aris = check.ping_farms('10.126.252.1')
-    #Power:10.126.253.1
-    ping_power = check.ping_farms('10.126.253.1')
+    # #Ping Farms:
+    # #Aris:10.126.252.1
+    # ping_aris = check.ping_farms('10.126.252.1')
+    # #Power:10.126.253.1
+    # ping_power = check.ping_farms('10.126.253.1')
     
     if live_aris_check:
         if is_called_from_menu:
