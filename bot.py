@@ -61,7 +61,8 @@ async def my_periodic_function():
     if differences:
         print("Differences found:")
         for diff in differences:
-            await bot.send_message(chat_id='834795164', text=diff)  # Replace YOUR_CHAT_ID with the desired chat ID
+            await bot.send_message(chat_id='834795164', text=diff)  
+            await bot.send_message(chat_id='6647243369', text=diff)
     else:
         print("No differences found.")   
    
